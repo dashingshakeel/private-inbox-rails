@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    
+
     @receipts = conversation.receipts_for(current_user)
     # mark conversation as read
     conversation.mark_as_read(current_user)
@@ -24,7 +24,9 @@ class ConversationsController < ApplicationController
 
 
   private
-
+  def message_params
+    params.require(:message).permit(:body, :subject)
+  end
   def conversation_params
     params.require(:conversation).permit(:subject, :body,recipients:[])
   end
