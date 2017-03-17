@@ -1,5 +1,5 @@
 class MailboxController < ApplicationController
-  helper_methode :mailbox
+  helper_method :mailbox
   before_action :authenticate_user!
 
   def inbox
@@ -8,7 +8,7 @@ class MailboxController < ApplicationController
   end
 
   def sent
-    @sent = mailbox.sent
+    @sent = mailbox.sentbox
     @active = :sent
   end
 
